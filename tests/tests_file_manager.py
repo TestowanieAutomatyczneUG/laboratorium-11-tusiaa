@@ -25,6 +25,13 @@ class Test_file_manager(unittest.TestCase):
             self.tmp.delete_from_file(mock, "Hello ")
             mock.assert_has_calls([call.read(), call.write('World')])
 
+    @patch.object(os, 'remove')
+    def test_file_manager_delete_file(self, removeMock):
+        OpenMock = mock_open()
+        with OpenMock(filePath, 'w+') as mock:
+            self.tmp.delete_file(mock)
+            removeMock.assert_called_once_with(os.path.realpath(mock.name))
+
     @parameterized.expand([
         ("", ValueError),
         (5, ValueError),
