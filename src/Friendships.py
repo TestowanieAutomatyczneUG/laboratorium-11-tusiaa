@@ -1,4 +1,4 @@
-class Frienships:
+class Friendships:
     def __init__(self):
         self.frienships = {}
 
