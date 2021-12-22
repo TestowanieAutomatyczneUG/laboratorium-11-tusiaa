@@ -121,3 +121,6 @@ class Tests_Frienships(unittest.TestCase):
     def test_areFriendsTrue(self):
         self.test_object.addFriend("person1", "person2")
         self.assertTrue(self.test_object.areFriends("person2", "person1"))
+
+    def tearDown(self):
+        del self.test_object
